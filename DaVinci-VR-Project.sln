@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{5B7B5C63-BED6-0AA4-A5C0-F776353D55EA}") = "DaVinci-VR-Project", "Assembly-CSharp-firstpass.csproj", "{91F7BBA6-1DF1-1208-9E77-3144B83A4234}"
+EndProject
+Project("{5B7B5C63-BED6-0AA4-A5C0-F776353D55EA}") = "DaVinci-VR-Project", "Assembly-CSharp.csproj", "{88713623-F7F0-3ACA-7257-C610ECD2203D}"
+EndProject
+Project("{5B7B5C63-BED6-0AA4-A5C0-F776353D55EA}") = "DaVinci-VR-Project", "Assembly-CSharp-Editor.csproj", "{9C53B06A-7777-9775-CA07-50D3975C7321}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91F7BBA6-1DF1-1208-9E77-3144B83A4234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F7BBA6-1DF1-1208-9E77-3144B83A4234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F7BBA6-1DF1-1208-9E77-3144B83A4234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F7BBA6-1DF1-1208-9E77-3144B83A4234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88713623-F7F0-3ACA-7257-C610ECD2203D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88713623-F7F0-3ACA-7257-C610ECD2203D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88713623-F7F0-3ACA-7257-C610ECD2203D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88713623-F7F0-3ACA-7257-C610ECD2203D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C53B06A-7777-9775-CA07-50D3975C7321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C53B06A-7777-9775-CA07-50D3975C7321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C53B06A-7777-9775-CA07-50D3975C7321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C53B06A-7777-9775-CA07-50D3975C7321}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
