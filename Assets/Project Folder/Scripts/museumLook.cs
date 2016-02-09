@@ -15,8 +15,10 @@ public class museumLook : MonoBehaviour {
 	//[SerializeField] private TextMesh textI4;
 	[SerializeField] private float rotVelX;
 	[SerializeField] private float rotVelY;
+	[SerializeField] private float movementSpeed;
 
-
+	private float xDeg;
+	private float yDeg;
 	private Vector3 startPosInv1;
 	//private Vector3 startPosInv2;
 	//private Vector3 startPosInv3;
@@ -53,31 +55,50 @@ public class museumLook : MonoBehaviour {
 
 		RaycastHit hit;
 
-		if(Physics.Raycast(mainCamera.position, mainCamera.forward.normalized, out hit)){
-			Transform objectHit = hit.transform;
-			//print ("mira a " + objectHit);													//test to see what the camera is looking
-			if (objectHit.name.Equals(invento1.name)) {
-				print ("aleluya " + objectHit);
-				float xDeg = Input.GetAxis ("Horizontal");
-				float yDeg = Input.GetAxis ("Vertical");
-				if (Mathf.Abs (yDeg) > 0.01) {
-					//invento1.Rotate (yDeg*rotVelY, 0 ,0);
-					invento1.RotateAround (Vector3.up, Vector3.right, rotVelX);
-					print ("position: " + invento1.position);
-					print ("rotation: " + invento1.rotation);
-				}
-				invento1.position = startPosInv1;
-				if (Mathf.Abs(xDeg) > 0.01 ) {
-					invento1.Rotate (0, xDeg*rotVelX*-1, 0);
-					print ("position: " + invento1.position);
-					print ("rotation: " + invento1.rotation);
-				}
+		if(!lookedAtInv1){
+			var xMov = Input.GetAxis ("Horizontal");
+			var yMov = Input.GetAxis ("Vertical");
+
+			if (Mathf.Abs (xMov) > 0.01) {
+				mainCamera.parent.Translate (mainCamera.right * xMov * movementSpeed);
+			}
+			if (Mathf.Abs (yMov) > 0.01) {
+				mainCamera.parent.Translate (mainCamera.forward * yMov *movementSpeed);
 			}
 		}
-		invento1.position.Set(startPosInv1.x, startPosInv1.y, startPosInv1.z);
+
 		//print ("current pos: " + invento1.position + " || initial pos: " + startPosInv1 );
 		//invento1.position = startPosInv2;
 		//invento1.position = startPosInv3;
 		//invento1.position = startPosInv4;
+
+		if(Physics.Raycast(mainCamera.position, mainCamera.forward.normalized, out hit)){
+			Transform objectHit = hit.transform;
+			print ("mira a " + objectHit);													//test to see what the camera is looking
+			if (objectHit.name.Equals ("Davinci")) {
+				lookedAtInv1 = true;
+			}
+
+			if(lookedAtInv1){
+				print ("aleluya " + objectHit);
+				xDeg = (Input.GetAxis ("Horizontal"));
+				yDeg = (Input.GetAxis ("Vertical"));				
+
+				if (Mathf.Abs (xDeg) > 0.01) {
+					invento1.Rotate (0 , -1 * xDeg * rotVelX, 0);
+					//invento1.RotateAround (Vector3.up, Vector3.right, rotVelX);
+					//invento1.rotation = Quaternion.AngleAxis(rotVelX, invento1.up);
+				}
+				invento1.position = startPosInv1;
+				if (Mathf.Abs(yDeg) > 0.01 ) {
+					//invento1.rotation = Quaternion.AngleAxis(rotVelY, invento1.right);
+					//invento1.Rotate (0, xDeg*rotVelX*-1, 0);
+					invento1.Rotate (yDeg * rotVelY, 0, 0);
+				}
+				if (Input.GetKey ("q")) {
+					lookedAtInv1 = false;
+				}
+			}
+		}
 	}
 }
