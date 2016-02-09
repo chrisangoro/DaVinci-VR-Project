@@ -55,19 +55,29 @@ public class museumLook : MonoBehaviour {
 
 		if(Physics.Raycast(mainCamera.position, mainCamera.forward.normalized, out hit)){
 			Transform objectHit = hit.transform;
-			print ("yeh " + objectHit);
-			if (objectHit == invento1) {
-				print ("WUUUUUUU " + objectHit);
+			//print ("mira a " + objectHit);													//test to see what the camera is looking
+			if (objectHit.name.Equals(invento1.name)) {
+				print ("aleluya " + objectHit);
 				float xDeg = Input.GetAxis ("Horizontal");
 				float yDeg = Input.GetAxis ("Vertical");
 				if (Mathf.Abs (yDeg) > 0.01) {
-					invento1.Rotate (0, yDeg*rotVelY, 0);
-				}
-				if (Mathf.Abs(xDeg) > 0.01 ) {
-					invento1.Rotate (xDeg*rotVelX, 0, 0);
+					//invento1.Rotate (yDeg*rotVelY, 0 ,0);
+					invento1.RotateAround (Vector3.up, Vector3.right, rotVelX);
+					print ("position: " + invento1.position);
+					print ("rotation: " + invento1.rotation);
 				}
 				invento1.position = startPosInv1;
+				if (Mathf.Abs(xDeg) > 0.01 ) {
+					invento1.Rotate (0, xDeg*rotVelX*-1, 0);
+					print ("position: " + invento1.position);
+					print ("rotation: " + invento1.rotation);
+				}
 			}
 		}
+		invento1.position.Set(startPosInv1.x, startPosInv1.y, startPosInv1.z);
+		//print ("current pos: " + invento1.position + " || initial pos: " + startPosInv1 );
+		//invento1.position = startPosInv2;
+		//invento1.position = startPosInv3;
+		//invento1.position = startPosInv4;
 	}
 }
