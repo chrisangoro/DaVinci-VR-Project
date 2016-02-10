@@ -60,10 +60,10 @@ public class museumLook : MonoBehaviour {
 			var yMov = Input.GetAxis ("Vertical");
 
 			if (Mathf.Abs (xMov) > 0.01) {
-				mainCamera.parent.Translate (mainCamera.right * xMov * movementSpeed);
+				mainCamera.parent.Translate (mainCamera.forward * xMov * movementSpeed);
 			}
 			if (Mathf.Abs (yMov) > 0.01) {
-				mainCamera.parent.Translate (mainCamera.forward * yMov *movementSpeed);
+				mainCamera.parent.Translate (mainCamera.right * yMov *movementSpeed);
 			}
 		}
 
