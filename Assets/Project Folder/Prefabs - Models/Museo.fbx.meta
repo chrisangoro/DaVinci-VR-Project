@@ -11140,7 +11140,7 @@ ModelImporter:
     4304428: Objeto_2210
     4304430: Objeto_2211
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

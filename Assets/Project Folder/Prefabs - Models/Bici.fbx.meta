@@ -1551,7 +1551,7 @@ ModelImporter:
     4300590: Objeto_5
     4300592: Objeto_6
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
