@@ -17,12 +17,16 @@ public class museumLook : MonoBehaviour {
 	[SerializeField] private float rotVelY;
 	[SerializeField] private float movementSpeed;
 
+    CardboardHead cardboardHead;
+
 	private float xDeg;
 	private float yDeg;
 	private Vector3 startPosInv1;
 	private Vector3 startPosInv2;
 	private Vector3 startPosInv3;
 	private Vector3 startPosInv4;
+    private Vector3 startForwardCamera;
+    private Vector3 startRightCamera;
 	private Quaternion startRotInv1;
 	//private Quaternion startRotInv2;
 	//private Quaternion startRotInv3;
@@ -38,6 +42,8 @@ public class museumLook : MonoBehaviour {
 		startPosInv2 = invento2.position;
 		startPosInv3 = invento3.position;
 		startPosInv4 = invento4.position;
+        startForwardCamera = mainCamera.forward;
+        startRightCamera = mainCamera.right;
 
 		startRotInv1 = invento1.rotation;
 		//startRotInv2 = invento2.rotation;
@@ -48,6 +54,8 @@ public class museumLook : MonoBehaviour {
 		lookedAtInv2 = false;
 		lookedAtInv3 = false;
 		lookedAtInv4 = false;
+
+        cardboardHead = Camera.main.GetComponent<StereoController>().Head;
 	}
 
 	// Update is called once per frame
@@ -59,11 +67,14 @@ public class museumLook : MonoBehaviour {
 			var xMov = Input.GetAxis ("Horizontal");
 			var yMov = Input.GetAxis ("Vertical");
 
+
 			if (Mathf.Abs (xMov) > 0.01) {
-				mainCamera.parent.Translate (mainCamera.forward.normalized * xMov * movementSpeed);
+                Vector3 forward = new Vector3(-cardboardHead.transform.forward.x, 0, cardboardHead.transform.forward.z).normalized;
+				mainCamera.Translate (forward * movementSpeed * -xMov);
 			}
 			if (Mathf.Abs (yMov) > 0.01) {
-				mainCamera.parent.Translate (mainCamera.right.normalized * yMov *movementSpeed);
+                Vector3 right = new Vector3(cardboardHead.transform.right.x, 0, cardboardHead.transform.right.z).normalized;
+				mainCamera.Translate (right * movementSpeed * yMov);
 			}
 		}
 
@@ -74,7 +85,7 @@ public class museumLook : MonoBehaviour {
 
 		if(Physics.Raycast(mainCamera.position, mainCamera.forward.normalized, out hit)){
 			Transform objectHit = hit.transform;
-			print ("mira a " + objectHit);                                              //test to see what the camera is looking
+			//print ("mira a " + objectHit);                                              //test to see what the camera is looking
 
 
             if (objectHit.name.Equals ("Davinci")) {
@@ -108,7 +119,7 @@ public class museumLook : MonoBehaviour {
 /*---------------------------------------------------------INVENTO 1----------------------------------------------------------*/
 
             if (lookedAtInv1){
-				print ("aleluya " + objectHit);
+				//print ("aleluya " + objectHit);
 				xDeg = (Input.GetAxis ("Horizontal"));
 				yDeg = (Input.GetAxis ("Vertical"));				
 
@@ -128,7 +139,7 @@ public class museumLook : MonoBehaviour {
 
             if (lookedAtInv2)
             {
-                print("aleluya " + objectHit);
+               // print("aleluya " + objectHit);
                 xDeg = (Input.GetAxis("Horizontal"));
                 yDeg = (Input.GetAxis("Vertical"));
 
@@ -150,7 +161,7 @@ public class museumLook : MonoBehaviour {
 
             if (lookedAtInv3)
             {
-                print("aleluya " + objectHit);
+               // print("aleluya " + objectHit);
                 xDeg = (Input.GetAxis("Horizontal"));
                 yDeg = (Input.GetAxis("Vertical"));
 
@@ -172,7 +183,7 @@ public class museumLook : MonoBehaviour {
 
             if (lookedAtInv4)
             {
-                print("aleluya " + objectHit);
+               // print("aleluya " + objectHit);
                 xDeg = (Input.GetAxis("Horizontal"));
                 yDeg = (Input.GetAxis("Vertical"));
 
