@@ -75,8 +75,6 @@
      <Compile Include="Assets\Cardboard\Scripts\VRDevices\CardboardAndroidDevice.cs" />
      <Compile Include="Assets\Cardboard\Scripts\VRDevices\CardboardiOSDevice.cs" />
      <Compile Include="Assets\Cardboard\Scripts\VRDevices\UnityEditorDevice.cs" />
-     <Compile Include="Assets\Project Folder\Scripts\CannonMovement.cs" />
-     <Compile Include="Assets\Project Folder\Scripts\DaVinci360.cs" />
      <Compile Include="Assets\Project Folder\Scripts\museumLook.cs" />
      <None Include="Assets\Cardboard\Resources\SkyboxMesh.shader" />
      <None Include="Assets\Cardboard\Distortion\CardboardDistortion.cginc" />
