@@ -63,20 +63,6 @@ public class museumLook : MonoBehaviour {
 
 		RaycastHit hit;
 
-		if(!lookedAtInv1 && !lookedAtInv2 && !lookedAtInv3 && !lookedAtInv4){
-			var xMov = Input.GetAxis ("Horizontal");
-			var yMov = Input.GetAxis ("Vertical");
-
-
-			if (Mathf.Abs (xMov) > 0.01) {
-                Vector3 forward = new Vector3(-cardboardHead.transform.forward.x, 0, cardboardHead.transform.forward.z).normalized;
-				mainCamera.Translate (forward * movementSpeed * -xMov);
-			}
-			if (Mathf.Abs (yMov) > 0.01) {
-                Vector3 right = new Vector3(cardboardHead.transform.right.x, 0, cardboardHead.transform.right.z).normalized;
-				mainCamera.Translate (right * movementSpeed * yMov);
-			}
-		}
 
 		//print ("current pos: " + invento1.position + " || initial pos: " + startPosInv1 );
 		//invento1.position = startPosInv2;
@@ -85,7 +71,7 @@ public class museumLook : MonoBehaviour {
 
 		if(Physics.Raycast(mainCamera.position, mainCamera.forward.normalized, out hit)){
 			Transform objectHit = hit.transform;
-			//print ("mira a " + objectHit);                                              //test to see what the camera is looking
+			print ("mira a " + objectHit);                                              //test to see what the camera is looking
 
 
             if (objectHit.name.Equals ("Davinci")) {
@@ -95,14 +81,14 @@ public class museumLook : MonoBehaviour {
                 }
             }
 
-            if (objectHit.name.Equals("Bici")) {
+            if (objectHit.name.Equals("Bike")) {
                 if (Input.GetKey("q"))
                 {
                     lookedAtInv2 = true;
                 }
             }
 
-            if (objectHit.name.Equals("Intento")) {
+            if (objectHit.name.Equals("Base-intento")) {
                 if (Input.GetKey("q"))
                 {
                     lookedAtInv3 = true;
@@ -119,7 +105,7 @@ public class museumLook : MonoBehaviour {
 /*---------------------------------------------------------INVENTO 1----------------------------------------------------------*/
 
             if (lookedAtInv1){
-				//print ("aleluya " + objectHit);
+				print ("aleluya " + objectHit);
 				xDeg = (Input.GetAxis ("Horizontal"));
 				yDeg = (Input.GetAxis ("Vertical"));				
 
@@ -139,13 +125,13 @@ public class museumLook : MonoBehaviour {
 
             if (lookedAtInv2)
             {
-               // print("aleluya " + objectHit);
+                print("aleluya " + objectHit);
                 xDeg = (Input.GetAxis("Horizontal"));
                 yDeg = (Input.GetAxis("Vertical"));
 
                 if (Mathf.Abs(xDeg) > 0.01)
                 {
-                    invento2.Rotate(0, 0, -1 * xDeg * rotVelX);
+                    invento2.Rotate(0, -1 * xDeg * rotVelX, 0);
                 }
                 invento2.position = startPosInv2;
                 /*if (Mathf.Abs(yDeg) > 0.01 ) {
@@ -161,7 +147,7 @@ public class museumLook : MonoBehaviour {
 
             if (lookedAtInv3)
             {
-               // print("aleluya " + objectHit);
+                print("aleluya " + objectHit);
                 xDeg = (Input.GetAxis("Horizontal"));
                 yDeg = (Input.GetAxis("Vertical"));
 
@@ -183,7 +169,7 @@ public class museumLook : MonoBehaviour {
 
             if (lookedAtInv4)
             {
-               // print("aleluya " + objectHit);
+                print("aleluya " + objectHit);
                 xDeg = (Input.GetAxis("Horizontal"));
                 yDeg = (Input.GetAxis("Vertical"));
 
@@ -200,6 +186,27 @@ public class museumLook : MonoBehaviour {
                     lookedAtInv4 = false;
                 }
             }
+
+            //---------------------MOVIMIENTO-----------------------//
+
+            if (lookedAtInv1 == false && lookedAtInv2 == false && lookedAtInv3 == false && lookedAtInv4 == false)
+            {
+                var xMov = Input.GetAxis("Horizontal");
+                var yMov = Input.GetAxis("Vertical");
+
+
+                if (Mathf.Abs(xMov) > 0.01)
+                {
+                    Vector3 forward = new Vector3(-cardboardHead.transform.forward.x, 0, cardboardHead.transform.forward.z).normalized;
+                    mainCamera.parent.Translate(forward * movementSpeed * -xMov);
+                }
+                if (Mathf.Abs(yMov) > 0.01)
+                {
+                    Vector3 right = new Vector3(cardboardHead.transform.right.x, 0, cardboardHead.transform.right.z).normalized;
+                    mainCamera.parent.Translate(right * movementSpeed * yMov);
+                }
+            }
+
         }
-	}
+    }
 }

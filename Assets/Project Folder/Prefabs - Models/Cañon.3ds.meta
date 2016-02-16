@@ -283,7 +283,7 @@ ModelImporter:
     4300106: STLB A_146
     4300108: STLB A_216
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
