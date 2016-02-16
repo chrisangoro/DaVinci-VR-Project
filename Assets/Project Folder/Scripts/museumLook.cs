@@ -31,10 +31,11 @@ public class museumLook : MonoBehaviour {
 	//private Quaternion startRotInv2;
 	//private Quaternion startRotInv3;
 	//private Quaternion startRotInv4;
-	private bool lookedAtInv1;
-	private bool lookedAtInv2;
-	private bool lookedAtInv3;
-	private bool lookedAtInv4;
+	private bool lookedAtInv1 = false;
+	private bool lookedAtInv2 = false;
+	private bool lookedAtInv3 = false;
+	private bool lookedAtInv4 = false;
+	private bool mirandoA = false;
 
 	// Use this for initialization
 	void Start () {
@@ -50,10 +51,6 @@ public class museumLook : MonoBehaviour {
 		//startRotInv3 = invento3.rotation;
 		//startRotInv4 = invento4.rotation;
 
-		lookedAtInv1 = false;
-		lookedAtInv2 = false;
-		lookedAtInv3 = false;
-		lookedAtInv4 = false;
 
         cardboardHead = Camera.main.GetComponent<StereoController>().Head;
 	}
@@ -61,152 +58,149 @@ public class museumLook : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		rotarInvento ();
+
+/*----------------------------------------------------------------MOVIMIENTO-----------------------------------------------------------*/
+
+		if (mirandoA == false){
+
+
+				var xMov = Input.GetAxis("Horizontal");
+				var yMov = Input.GetAxis("Vertical");
+
+
+				if (Mathf.Abs(xMov) > 0.01)
+				{
+					Vector3 forward = new Vector3(cardboardHead.transform.forward.x, 0, cardboardHead.transform.forward.z).normalized;
+					mainCamera.parent.Translate(forward * movementSpeed * xMov);
+				}
+				if (Mathf.Abs(yMov) > 0.01)
+				{
+					Vector3 right = new Vector3(cardboardHead.transform.right.x, 0, cardboardHead.transform.right.z).normalized;
+					mainCamera.parent.Translate(right * movementSpeed * -yMov);
+				}
+
+        }
+
+
+    }
+
+	public void MirandoA(Transform invento){
+
 		RaycastHit hit;
-
-
-		//print ("current pos: " + invento1.position + " || initial pos: " + startPosInv1 );
-		//invento1.position = startPosInv2;
-		//invento1.position = startPosInv3;
-		//invento1.position = startPosInv4;
 
 		if(Physics.Raycast(mainCamera.position, mainCamera.forward.normalized, out hit)){
 			Transform objectHit = hit.transform;
-			print ("mira a " + objectHit);                                              //test to see what the camera is looking
 
 
-            if (objectHit.name.Equals ("Davinci")) {
-                if (Input.GetKey("q"))
-                {
-                    lookedAtInv1 = true;
-                }
-            }
-
-            if (objectHit.name.Equals("Bike")) {
-                if (Input.GetKey("q"))
-                {
-                    lookedAtInv2 = true;
-                }
-            }
-
-            if (objectHit.name.Equals("Base-intento")) {
-                if (Input.GetKey("q"))
-                {
-                    lookedAtInv3 = true;
-                }
-            }
-
-            if (objectHit.name.Equals("DaVinciCannon")) {
-                if (Input.GetKey("q"))
-                {
-                    lookedAtInv4 = true;
-                }
-            }
-
-/*---------------------------------------------------------INVENTO 1----------------------------------------------------------*/
-
-            if (lookedAtInv1){
-				print ("aleluya " + objectHit);
-				xDeg = (Input.GetAxis ("Horizontal"));
-				yDeg = (Input.GetAxis ("Vertical"));				
-
-				if (Mathf.Abs (xDeg) > 0.01) {
-					invento1.Rotate (0 , -1 * xDeg * rotVelX, 0);
-				}
-				invento1.position = startPosInv1;
-				/*if (Mathf.Abs(yDeg) > 0.01 ) {
-					invento1.Rotate (yDeg * rotVelY, 0, 0);
-				}*/
-				if (Input.GetKey ("q")) {
-					lookedAtInv1 = false;
+			if (invento.name.Equals("Da Vinci") && objectHit.name.Equals ("Davinci")) {
+				if (Input.GetButton("Activate"))
+				{
+					lookedAtInv1 = true;
+					mirandoA = true;
 				}
 			}
 
-/*---------------------------------------------------------INVENTO 2----------------------------------------------------------*/
+			if (invento.name.Equals("Bike") && objectHit.name.Equals("Bike")) {
+				if (Input.GetButton("Activate"))
+				{
+					lookedAtInv2 = true;
+					mirandoA = true;
+				}
+			}
 
-            if (lookedAtInv2)
-            {
-                print("aleluya " + objectHit);
-                xDeg = (Input.GetAxis("Horizontal"));
-                yDeg = (Input.GetAxis("Vertical"));
+			if (invento.name.Equals("Base-intento") && objectHit.name.Equals("Base-intento")) {
+				if (Input.GetButton("Activate"))
+				{
+					lookedAtInv3 = true;
+					mirandoA = true;
+				}
+			}
 
-                if (Mathf.Abs(xDeg) > 0.01)
-                {
-                    invento2.Rotate(0, -1 * xDeg * rotVelX, 0);
-                }
-                invento2.position = startPosInv2;
-                /*if (Mathf.Abs(yDeg) > 0.01 ) {
-					invento1.Rotate (yDeg * rotVelY, 0, 0);
-				}*/
-                if (Input.GetKey("q"))
-                {
-                    lookedAtInv2 = false;
-                }
-            }
+			if (invento.name.Equals("Base-Canon") && objectHit.name.Equals("DaVinciCannon")) {
+				if (Input.GetButton("Activate"))
+				{
+					lookedAtInv4 = true;
+					mirandoA = true;
+				}
+			}
 
-/*---------------------------------------------------------INVENTO 3----------------------------------------------------------*/
+		}
 
-            if (lookedAtInv3)
-            {
-                print("aleluya " + objectHit);
-                xDeg = (Input.GetAxis("Horizontal"));
-                yDeg = (Input.GetAxis("Vertical"));
+		if (mirandoA) {
+			if (Input.GetButton("Deactivate")) {
+				lookedAtInv1 = false;
+				lookedAtInv2 = false;
+				lookedAtInv3 = false;
+				lookedAtInv4 = false;
+				mirandoA = false;
+			}
+		}
 
-                if (Mathf.Abs(xDeg) > 0.01)
-                {
-                    invento3.Rotate(0, 0, -1 * xDeg * rotVelX);
-                }
-                invento3.position = startPosInv3;
-                /*if (Mathf.Abs(yDeg) > 0.01 ) {
-					invento1.Rotate (yDeg * rotVelY, 0, 0);
-				}*/
-                if (Input.GetKey("q"))
-                {
-                    lookedAtInv3 = false;
-                }
-            }
-
-/*---------------------------------------------------------INVENTO 4----------------------------------------------------------*/
-
-            if (lookedAtInv4)
-            {
-                print("aleluya " + objectHit);
-                xDeg = (Input.GetAxis("Horizontal"));
-                yDeg = (Input.GetAxis("Vertical"));
-
-                if (Mathf.Abs(xDeg) > 0.01)
-                {
-                    invento4.Rotate(0, 0, -1 * xDeg * rotVelX);
-                }
-                invento4.position = startPosInv4;
-                /*if (Mathf.Abs(yDeg) > 0.01 ) {
-					invento1.Rotate (yDeg * rotVelY, 0, 0);
-				}*/
-                if (Input.GetKey("q"))
-                {
-                    lookedAtInv4 = false;
-                }
-            }
-
-            //---------------------MOVIMIENTO-----------------------//
-
-            if (lookedAtInv1 == false && lookedAtInv2 == false && lookedAtInv3 == false && lookedAtInv4 == false)
-            {
-                var xMov = Input.GetAxis("Horizontal");
-                var yMov = Input.GetAxis("Vertical");
+	}
 
 
-                if (Mathf.Abs(xMov) > 0.01)
-                {
-                    Vector3 forward = new Vector3(-cardboardHead.transform.forward.x, 0, cardboardHead.transform.forward.z).normalized;
-                    mainCamera.parent.Translate(forward * movementSpeed * -xMov);
-                }
-                if (Mathf.Abs(yMov) > 0.01)
-                {
-                    Vector3 right = new Vector3(cardboardHead.transform.right.x, 0, cardboardHead.transform.right.z).normalized;
-                    mainCamera.parent.Translate(right * movementSpeed * yMov);
-                }
-            }
+	public void rotarInvento(){
 
-        }
-    }
+		MirandoA (invento1);
+		MirandoA (invento2);
+		MirandoA (invento3);
+		MirandoA (invento4);
+
+
+		/*---------------------------------------------------------INVENTO 1----------------------------------------------------------*/
+
+		if (lookedAtInv1)
+		{
+			xDeg = (Input.GetAxis ("Horizontal"));
+			yDeg = (Input.GetAxis ("Vertical"));				
+
+			if (Mathf.Abs (xDeg) > 0.01) {
+				invento1.Rotate (0, -1 * xDeg * rotVelX, 0);
+			}
+			invento1.position = startPosInv1;
+		}
+
+		/*---------------------------------------------------------INVENTO 2----------------------------------------------------------*/
+
+		if (lookedAtInv2)
+		{
+			xDeg = (Input.GetAxis ("Horizontal"));
+			yDeg = (Input.GetAxis ("Vertical"));
+
+			if (Mathf.Abs (xDeg) > 0.01) {
+				invento2.Rotate (0, -1 * xDeg * rotVelX, 0);
+			}
+			invento2.position = startPosInv2;
+		}
+
+		/*---------------------------------------------------------INVENTO 3----------------------------------------------------------*/
+
+		if (lookedAtInv3)
+		{
+				xDeg = (Input.GetAxis ("Horizontal"));
+				yDeg = (Input.GetAxis ("Vertical"));
+
+				if (Mathf.Abs (xDeg) > 0.01) {
+					invento3.Rotate (0, 0, -1 * xDeg * rotVelX);
+				}
+				invento3.position = startPosInv3;
+
+		}
+
+		/*---------------------------------------------------------INVENTO 4----------------------------------------------------------*/
+
+		if (lookedAtInv4)
+		{
+			xDeg = (Input.GetAxis ("Horizontal"));
+			yDeg = (Input.GetAxis ("Vertical"));
+
+			if (Mathf.Abs (xDeg) > 0.01) {
+				invento4.Rotate (0, 0, -1 * xDeg * rotVelX);
+			}
+			invento4.position = startPosInv4;
+		}
+
+	}
+
 }
