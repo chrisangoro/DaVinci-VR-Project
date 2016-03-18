@@ -43,6 +43,7 @@ public class museumLook : MonoBehaviour {
 		startPosInv2 = invento2.position;
 		startPosInv3 = invento3.position;
 		startPosInv4 = invento4.position;
+
         startForwardCamera = mainCamera.forward;
         startRightCamera = mainCamera.right;
 
@@ -93,8 +94,8 @@ public class museumLook : MonoBehaviour {
 			Transform objectHit = hit.transform;
 
 
-			if (invento.name.Equals("Da Vinci") && objectHit.name.Equals ("Davinci")) {
-				if (Input.GetButton("Activate"))
+			if (invento.name.Equals(objectHit.name)) {
+				if (Input.GetKey("q"))
 				{
 					lookedAtInv1 = true;
 					mirandoA = true;
@@ -102,7 +103,7 @@ public class museumLook : MonoBehaviour {
 			}
 
 			if (invento.name.Equals("Bike") && objectHit.name.Equals("Bike")) {
-				if (Input.GetButton("Activate"))
+				if (Input.GetKey("q"))
 				{
 					lookedAtInv2 = true;
 					mirandoA = true;
@@ -110,7 +111,7 @@ public class museumLook : MonoBehaviour {
 			}
 
 			if (invento.name.Equals("Base-intento") && objectHit.name.Equals("Base-intento")) {
-				if (Input.GetButton("Activate"))
+				if (Input.GetKey("q"))
 				{
 					lookedAtInv3 = true;
 					mirandoA = true;
@@ -118,7 +119,7 @@ public class museumLook : MonoBehaviour {
 			}
 
 			if (invento.name.Equals("Base-Canon") && objectHit.name.Equals("DaVinciCannon")) {
-				if (Input.GetButton("Activate"))
+				if (Input.GetKey("q"))
 				{
 					lookedAtInv4 = true;
 					mirandoA = true;
@@ -128,7 +129,7 @@ public class museumLook : MonoBehaviour {
 		}
 
 		if (mirandoA) {
-			if (Input.GetButton("Deactivate")) {
+			if (Input.GetKey("e")) {
 				lookedAtInv1 = false;
 				lookedAtInv2 = false;
 				lookedAtInv3 = false;
