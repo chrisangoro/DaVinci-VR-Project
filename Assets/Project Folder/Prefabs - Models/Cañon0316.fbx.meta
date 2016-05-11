@@ -1,0 +1,129 @@
+fileFormatVersion: 2
+guid: 02749056ca7544dec8d824ea27d0721e
+timeCreated: 1459197887
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: STLB A_027
+    100004: STLB A_027_MeshPart0
+    100006: STLB A_027_MeshPart1
+    100008: STLB A_047
+    100010: STLB A_137
+    100012: STLB A_137_MeshPart0
+    100014: STLB A_137_MeshPart1
+    100016: STLB A_138
+    100018: STLB A_138_MeshPart0
+    100020: STLB A_138_MeshPart1
+    100022: STLB A_138_MeshPart2
+    100024: STLB A_138_MeshPart3
+    100026: STLB A_138_MeshPart4
+    400000: //RootNode
+    400002: STLB A_027
+    400004: STLB A_027_MeshPart0
+    400006: STLB A_027_MeshPart1
+    400008: STLB A_047
+    400010: STLB A_137
+    400012: STLB A_137_MeshPart0
+    400014: STLB A_137_MeshPart1
+    400016: STLB A_138
+    400018: STLB A_138_MeshPart0
+    400020: STLB A_138_MeshPart1
+    400022: STLB A_138_MeshPart2
+    400024: STLB A_138_MeshPart3
+    400026: STLB A_138_MeshPart4
+    2300000: STLB A_027_MeshPart0
+    2300002: STLB A_027_MeshPart1
+    2300004: STLB A_047
+    2300006: STLB A_137_MeshPart0
+    2300008: STLB A_137_MeshPart1
+    2300010: STLB A_138_MeshPart0
+    2300012: STLB A_138_MeshPart1
+    2300014: STLB A_138_MeshPart2
+    2300016: STLB A_138_MeshPart3
+    2300018: STLB A_138_MeshPart4
+    3300000: STLB A_027_MeshPart0
+    3300002: STLB A_027_MeshPart1
+    3300004: STLB A_047
+    3300006: STLB A_137_MeshPart0
+    3300008: STLB A_137_MeshPart1
+    3300010: STLB A_138_MeshPart0
+    3300012: STLB A_138_MeshPart1
+    3300014: STLB A_138_MeshPart2
+    3300016: STLB A_138_MeshPart3
+    3300018: STLB A_138_MeshPart4
+    4300000: STLB A_138_MeshPart0
+    4300002: STLB A_138_MeshPart1
+    4300004: STLB A_138_MeshPart2
+    4300006: STLB A_138_MeshPart3
+    4300008: STLB A_138_MeshPart4
+    4300010: STLB A_137_MeshPart0
+    4300012: STLB A_137_MeshPart1
+    4300014: STLB A_047
+    4300016: STLB A_027_MeshPart0
+    4300018: STLB A_027_MeshPart1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
