@@ -39,15 +39,15 @@ public class museumLook : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		startPosInv1 = invento1.position;
-		startPosInv2 = invento2.position;
-		startPosInv3 = invento3.position;
-		startPosInv4 = invento4.position;
+		//startPosInv1 = invento1.position;
+		//startPosInv2 = invento2.position;
+		//startPosInv3 = invento3.position;
+		//startPosInv4 = invento4.position;
 
-        startForwardCamera = mainCamera.forward;
-        startRightCamera = mainCamera.right;
+//        startForwardCamera = mainCamera.forward;
+ //       startRightCamera = mainCamera.right;
 
-		startRotInv1 = invento1.rotation;
+//		startRotInv1 = invento1.rotation;
 		//startRotInv2 = invento2.rotation;
 		//startRotInv3 = invento3.rotation;
 		//startRotInv4 = invento4.rotation;
@@ -63,7 +63,7 @@ public class museumLook : MonoBehaviour {
 
 /*----------------------------------------------------------------MOVIMIENTO-----------------------------------------------------------*/
 
-		if (mirandoA == false){
+	//	if (mirandoA == false){
 
 
 				var xMov = Input.GetAxis("Horizontal");
@@ -81,13 +81,13 @@ public class museumLook : MonoBehaviour {
 					mainCamera.parent.Translate(right * movementSpeed * -yMov);
 				}
 
-        }
+      //  }
 
 
-    }
+   }
 
 	public void MirandoA(Transform invento){
-
+/*
 		RaycastHit hit;
 
 		if(Physics.Raycast(mainCamera.position, mainCamera.forward.normalized, out hit)){
@@ -137,12 +137,12 @@ public class museumLook : MonoBehaviour {
 				mirandoA = false;
 			}
 		}
-
+*/
 	}
 
 
 	public void rotarInvento(){
-
+		
 		MirandoA (invento1);
 		MirandoA (invento2);
 		MirandoA (invento3);
