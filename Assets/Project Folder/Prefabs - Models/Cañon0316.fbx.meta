@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 02749056ca7544dec8d824ea27d0721e
-timeCreated: 1459197887
+guid: d1346ebc98d174f2caaf37c6977534ea
+timeCreated: 1466003962
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -64,7 +64,7 @@ ModelImporter:
     4300016: STLB A_027_MeshPart0
     4300018: STLB A_027_MeshPart1
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

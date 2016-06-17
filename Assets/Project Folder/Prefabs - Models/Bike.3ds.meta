@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cc7ecb0d4a04efa46a343e4aa404488d
-timeCreated: 1455288171
+guid: 4981d77d323ed4a7381f98caf2f31fe0
+timeCreated: 1466003216
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -518,7 +518,7 @@ ModelImporter:
     4300200: Obj_000101
     4300202: Obj_000102
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

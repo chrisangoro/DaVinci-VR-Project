@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 886f3ae27f49c4ce6953f8cd38e18d8e
-timeCreated: 1455121057
+guid: f46b082552eec489dbdf429c409aa4ca
+timeCreated: 1466004001
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -45,7 +45,7 @@ ModelImporter:
     4300006: Objeto_5
     4300008: Objeto_6
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
